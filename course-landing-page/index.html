@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMC Course | Master MERN + AI Development</title>
+  <meta name="description" content="EMC Course by Error Makes Clever is an industry-focused MERN + AI mentorship program for students, professionals, and beginners who want to build real-world production-ready applications.">
+  <meta name="keywords" content="EMC Course, Error Makes Clever, MERN course, AI mentorship, full stack development, OpenAI, React, Node.js, MongoDB, developer bootcamp">
+  <meta name="author" content="Error Makes Clever">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#020617">
+  <meta name="color-scheme" content="dark light">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EMC Course | Master MERN + AI Development">
+  <meta property="og:description" content="Build real MERN + AI applications with an active IT professional. Industry-focused mentorship, real-world projects, AI workflows, deployment, and production engineering.">
+  <meta property="og:site_name" content="EMC Course">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EMC Course | Master MERN + AI Development">
+  <meta name="twitter:description" content="From beginner to AI-powered full stack developer with practical MERN + AI mentorship by Error Makes Clever.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      const storedTheme = localStorage.getItem('emc-course-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    }());
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            sans: ['Manrope', 'sans-serif']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(34, 211, 238, 0.24), 0 24px 80px rgba(34, 211, 238, 0.18)',
+            glowBlue: '0 0 0 1px rgba(96, 165, 250, 0.22), 0 28px 90px rgba(59, 130, 246, 0.18)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg-rgb: 244 247 251;
+      --bg-soft-rgb: 255 255 255;
+      --surface-rgb: 255 255 255;
+      --surface-strong-rgb: 240 247 255;
+      --text-rgb: 15 23 42;
+      --muted-rgb: 71 85 105;
+      --line-rgb: 148 163 184;
+      --shadow-rgb: 15 23 42;
+      --glow-a-rgb: 34 211 238;
+      --glow-b-rgb: 59 130 246;
+      --glow-c-rgb: 129 140 248;
+    }
+
+    .dark {
+      color-scheme: dark;
+      --bg-rgb: 2 6 23;
+      --bg-soft-rgb: 7 12 27;
+      --surface-rgb: 15 23 42;
+      --surface-strong-rgb: 9 17 33;
+      --text-rgb: 226 232 240;
+      --muted-rgb: 148 163 184;
+      --line-rgb: 71 85 105;
+      --shadow-rgb: 2 6 23;
+      --glow-a-rgb: 34 211 238;
+      --glow-b-rgb: 56 189 248;
+      --glow-c-rgb: 99 102 241;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Manrope', sans-serif;
+      color: rgb(var(--text-rgb));
+      background:
+        radial-gradient(circle at top left, rgba(var(--glow-a-rgb), 0.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(var(--glow-c-rgb), 0.12), transparent 28%),
+        radial-gradient(circle at bottom center, rgba(var(--glow-b-rgb), 0.1), transparent 36%),
+        rgb(var(--bg-rgb));
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::before {
+      background-image:
+        linear-gradient(rgba(var(--line-rgb), 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--line-rgb), 0.08) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(circle at center, black 32%, transparent 82%);
+      opacity: 0.85;
+    }
+
+    body::after {
+      inset: auto -8rem -8rem auto;
+      width: 34rem;
+      height: 34rem;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(var(--glow-a-rgb), 0.22), transparent 52%),
+        radial-gradient(circle at 70% 70%, rgba(var(--glow-c-rgb), 0.22), transparent 50%);
+      filter: blur(44px);
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+
+    @supports (text-wrap: balance) {
+      .text-balance {
+        text-wrap: balance;
+      }
+    }
+
+    .glass-card {
+      border: 1px solid rgba(var(--line-rgb), 0.18);
+      background: linear-gradient(180deg, rgba(var(--surface-rgb), 0.82), rgba(var(--surface-strong-rgb), 0.62));
+      backdrop-filter: blur(22px);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.02),
+        0 24px 80px rgba(var(--shadow-rgb), 0.12);
+    }
+
+    .dark .glass-card {
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.02),
+        0 24px 80px rgba(var(--shadow-rgb), 0.36);
+    }
+
+    .glass-border {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(var(--glow-a-rgb), 0.46), rgba(var(--glow-c-rgb), 0.16), rgba(255, 255, 255, 0.04));
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: xor;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      pointer-events: none;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(var(--line-rgb), 0.2);
+      background: rgba(var(--surface-rgb), 0.68);
+      padding: 0.55rem 0.9rem;
+      font-size: 0.77rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgb(var(--muted-rgb));
+      backdrop-filter: blur(14px);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, rgb(var(--glow-a-rgb)) 0%, rgb(var(--glow-b-rgb)) 45%, rgb(var(--glow-c-rgb)) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .glow-pill {
+      border: 1px solid rgba(var(--glow-a-rgb), 0.26);
+      background: rgba(var(--glow-a-rgb), 0.08);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02), 0 0 24px rgba(var(--glow-a-rgb), 0.12);
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(8px);
+      opacity: 0.75;
+      animation: pulseGlow 7s ease-in-out infinite alternate;
+    }
+
+    .hero-ring {
+      position: absolute;
+      inset: 12%;
+      border-radius: 999px;
+      border: 1px solid rgba(var(--glow-a-rgb), 0.22);
+      box-shadow: 0 0 30px rgba(var(--glow-a-rgb), 0.14), inset 0 0 30px rgba(var(--glow-c-rgb), 0.08);
+      animation: spinSlow 22s linear infinite;
+    }
+
+    .hero-ring::before,
+    .hero-ring::after {
+      content: '';
+      position: absolute;
+      inset: 12%;
+      border-radius: inherit;
+      border: 1px dashed rgba(var(--glow-c-rgb), 0.18);
+    }
+
+    .hero-ring::after {
+      inset: 24%;
+      border-style: solid;
+      border-color: rgba(var(--glow-b-rgb), 0.18);
+    }
+
+    .floating-card {
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .floating-card:nth-child(2) {
+      animation-delay: -1.6s;
+    }
+
+    .floating-card:nth-child(3) {
+      animation-delay: -3.2s;
+    }
+
+    .terminal-line {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .terminal-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+      transform: translateX(-100%);
+      animation: scan 4.8s linear infinite;
+    }
+
+    .cursor-blink {
+      animation: blink 1.05s step-end infinite;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px) scale(0.985);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+      transition-delay: var(--reveal-delay, 0s);
+    }
+
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    body:not(.is-loaded) [data-load] {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    body.is-loaded [data-load] {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+      transition-delay: var(--load-delay, 0s);
+    }
+
+    .timeline {
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      top: 0.8rem;
+      bottom: 0.8rem;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(var(--glow-a-rgb), 0.75), rgba(var(--glow-c-rgb), 0.35), rgba(var(--glow-b-rgb), 0.7));
+      box-shadow: 0 0 20px rgba(var(--glow-a-rgb), 0.22);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 3rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 0.52rem;
+      top: 1.35rem;
+      width: 0.95rem;
+      height: 0.95rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(var(--glow-a-rgb), 1), rgba(var(--glow-c-rgb), 1));
+      box-shadow: 0 0 0 0.35rem rgba(var(--glow-a-rgb), 0.12), 0 0 24px rgba(var(--glow-a-rgb), 0.45);
+    }
+
+    @media (min-width: 1024px) {
+      .timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        width: calc(50% - 2.5rem);
+        padding-left: 0;
+      }
+
+      .timeline-left {
+        margin-right: auto;
+        padding-right: 4rem;
+      }
+
+      .timeline-right {
+        margin-left: auto;
+        padding-left: 4rem;
+      }
+
+      .timeline-left .timeline-dot {
+        left: auto;
+        right: -0.48rem;
+      }
+
+      .timeline-right .timeline-dot {
+        left: -0.48rem;
+      }
+    }
+
+    .faq-answer[hidden] {
+      display: none;
+    }
+
+    .countdown-value {
+      min-width: 4ch;
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      100% {
+        transform: translate3d(-32px, -22px, 0) scale(1.08);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        transform: scale(1);
+        opacity: 0.55;
+      }
+      100% {
+        transform: scale(1.08);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes scan {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes spinSlow {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyan-300/40 selection:text-slate-950 dark:selection:bg-cyan-200/30 dark:selection:text-white">
+  <div class="relative isolate">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 z-0 h-[38rem] bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.18),transparent_35%),radial-gradient(circle_at_80%_8%,rgba(99,102,241,0.15),transparent_30%)]"></div>
+
+    <!-- Sticky Navbar -->
+    <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/75 backdrop-blur-xl transition-colors duration-500 dark:border-slate-800/80 dark:bg-slate-950/65">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8" aria-label="Primary">
+        <a href="#hero" class="group inline-flex items-center gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-400/25 bg-slate-950 text-lg font-extrabold text-cyan-300 shadow-glow dark:border-cyan-300/15 dark:bg-slate-900">EM</span>
+          <span>
+            <span class="block font-display text-lg font-bold tracking-tight text-slate-950 transition-colors dark:text-white">EMC Course</span>
+            <span class="block text-xs font-semibold tracking-[0.24em] text-slate-500 dark:text-slate-400">ERROR MAKES CLEVER</span>
+          </span>
+        </a>
+
+        <div class="hidden items-center gap-6 lg:flex">
+          <a href="#features" class="text-sm font-semibold text-slate-600 transition hover:text-cyan-500 dark:text-slate-300 dark:hover:text-cyan-300">Features</a>
+          <a href="#roadmap" class="text-sm font-semibold text-slate-600 transition hover:text-cyan-500 dark:text-slate-300 dark:hover:text-cyan-300">Roadmap</a>
+          <a href="#projects" class="text-sm font-semibold text-slate-600 transition hover:text-cyan-500 dark:text-slate-300 dark:hover:text-cyan-300">Projects</a>
+          <a href="#instructor" class="text-sm font-semibold text-slate-600 transition hover:text-cyan-500 dark:text-slate-300 dark:hover:text-cyan-300">Instructor</a>
+          <a href="#pricing" class="text-sm font-semibold text-slate-600 transition hover:text-cyan-500 dark:text-slate-300 dark:hover:text-cyan-300">Pricing</a>
+          <a href="#faq" class="text-sm font-semibold text-slate-600 transition hover:text-cyan-500 dark:text-slate-300 dark:hover:text-cyan-300">FAQ</a>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button type="button" data-theme-toggle aria-label="Switch theme" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 text-slate-700 transition hover:border-cyan-400/40 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/60 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-200 dark:hover:border-cyan-300/30 dark:hover:text-cyan-300">
+            <i data-lucide="sun-medium" class="h-5 w-5 dark:hidden"></i>
+            <i data-lucide="moon-star" class="hidden h-5 w-5 dark:block"></i>
+          </button>
+          <a href="#pricing" class="hidden rounded-full bg-slate-950 px-5 py-3 text-sm font-bold text-white shadow-glowBlue transition duration-300 hover:-translate-y-0.5 hover:bg-slate-900 dark:bg-cyan-400 dark:text-slate-950 dark:hover:bg-cyan-300 sm:inline-flex">Enroll Now</a>
+          <button type="button" data-mobile-toggle aria-expanded="false" aria-controls="mobile-menu" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 text-slate-700 transition hover:border-cyan-400/40 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/60 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-200 dark:hover:border-cyan-300/30 dark:hover:text-cyan-300 lg:hidden">
+            <i data-lucide="menu" data-menu-open class="h-5 w-5"></i>
+            <i data-lucide="x" data-menu-close class="hidden h-5 w-5"></i>
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobile-menu" data-mobile-panel hidden class="border-t border-slate-200/70 px-4 py-4 backdrop-blur-xl dark:border-slate-800/70 lg:hidden">
+        <div class="mx-auto flex max-w-7xl flex-col gap-3">
+          <a href="#features" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-cyan-400/10 hover:text-cyan-500 dark:text-slate-200 dark:hover:bg-cyan-300/10 dark:hover:text-cyan-300">Features</a>
+          <a href="#roadmap" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-cyan-400/10 hover:text-cyan-500 dark:text-slate-200 dark:hover:bg-cyan-300/10 dark:hover:text-cyan-300">Roadmap</a>
+          <a href="#projects" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-cyan-400/10 hover:text-cyan-500 dark:text-slate-200 dark:hover:bg-cyan-300/10 dark:hover:text-cyan-300">Projects</a>
+          <a href="#instructor" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-cyan-400/10 hover:text-cyan-500 dark:text-slate-200 dark:hover:bg-cyan-300/10 dark:hover:text-cyan-300">Instructor</a>
+          <a href="#pricing" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-cyan-400/10 hover:text-cyan-500 dark:text-slate-200 dark:hover:bg-cyan-300/10 dark:hover:text-cyan-300">Pricing</a>
+          <a href="#faq" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-cyan-400/10 hover:text-cyan-500 dark:text-slate-200 dark:hover:bg-cyan-300/10 dark:hover:text-cyan-300">FAQ</a>
+          <a href="#pricing" class="mt-2 inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-bold text-white shadow-glowBlue transition hover:bg-slate-900 dark:bg-cyan-400 dark:text-slate-950 dark:hover:bg-cyan-300">Enroll Now</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="relative z-10">
+      <!-- Hero -->
+      <section id="hero" class="relative overflow-hidden">
+        <div class="mx-auto grid max-w-7xl gap-14 px-4 pb-20 pt-12 sm:px-6 sm:pb-24 sm:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:pb-28 lg:pt-20">
+          <div class="relative">
+            <div class="section-kicker mb-6" data-load style="--load-delay: 0.05s;">
+              <i data-lucide="sparkles" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+              Industry-Focused MERN + AI Mentorship
+            </div>
+            <h1 class="max-w-4xl font-display text-4xl font-extrabold leading-[0.95] tracking-tight text-slate-950 dark:text-white sm:text-5xl md:text-6xl xl:text-7xl" data-load style="--load-delay: 0.1s;">
+              Master <span class="gradient-text">MERN + AI</span> Development and ship real products, not tutorial clones.
+            </h1>
+            <p class="mt-6 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg" data-load style="--load-delay: 0.16s;">
+              EMC Course by Error Makes Clever is designed for beginners, working professionals, and developers who want practical industry workflows. Learn what real teams use to build, deploy, and scale MERN + AI applications with confidence.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row" data-load style="--load-delay: 0.22s;">
+              <a href="#pricing" class="inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-7 py-4 text-sm font-bold text-white shadow-glowBlue transition duration-300 hover:-translate-y-0.5 hover:bg-slate-900 dark:bg-cyan-400 dark:text-slate-950 dark:hover:bg-cyan-300">
+                Enroll Now
+                <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              </a>
+              <a href="#roadmap" class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300/70 bg-white/75 px-7 py-4 text-sm font-bold text-slate-900 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-400/40 hover:text-cyan-500 dark:border-slate-700 dark:bg-slate-900/70 dark:text-white dark:hover:border-cyan-300/30 dark:hover:text-cyan-300">
+                View Curriculum
+                <i data-lucide="play" class="h-4 w-4"></i>
+              </a>
+            </div>
+
+            <div class="mt-8 flex flex-wrap gap-3 text-sm" data-load style="--load-delay: 0.28s;">
+              <span class="glow-pill inline-flex items-center gap-2 rounded-full px-4 py-2 font-semibold text-slate-700 dark:text-slate-200">
+                <i data-lucide="briefcase-business" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                Working IT professional mentor
+              </span>
+              <span class="glow-pill inline-flex items-center gap-2 rounded-full px-4 py-2 font-semibold text-slate-700 dark:text-slate-200">
+                <i data-lucide="bot" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                Real AI workflows + agents
+              </span>
+              <span class="glow-pill inline-flex items-center gap-2 rounded-full px-4 py-2 font-semibold text-slate-700 dark:text-slate-200">
+                <i data-lucide="cloud" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                Production deployment included
+              </span>
+            </div>
+
+            <div class="mt-10 grid gap-4 sm:grid-cols-3" data-load style="--load-delay: 0.34s;">
+              <div class="glass-card glass-border rounded-3xl p-4">
+                <p class="text-xs font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Outcome</p>
+                <p class="mt-3 text-2xl font-extrabold text-slate-950 dark:text-white">Beginner to builder</p>
+                <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Zero knowledge to shipping full SaaS + AI apps.</p>
+              </div>
+              <div class="glass-card glass-border rounded-3xl p-4">
+                <p class="text-xs font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Focus</p>
+                <p class="mt-3 text-2xl font-extrabold text-slate-950 dark:text-white">Real company workflows</p>
+                <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Code review, deployment, debugging, and architecture.</p>
+              </div>
+              <div class="glass-card glass-border rounded-3xl p-4">
+                <p class="text-xs font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Audience</p>
+                <p class="mt-3 text-2xl font-extrabold text-slate-950 dark:text-white">Students to professionals</p>
+                <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Built for Indian learners preparing for tech careers.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative mx-auto w-full max-w-2xl" data-load style="--load-delay: 0.18s;">
+            <div aria-hidden="true" class="hero-orb -left-8 top-8 h-36 w-36 bg-cyan-400/35"></div>
+            <div aria-hidden="true" class="hero-orb right-10 top-0 h-28 w-28 bg-indigo-400/30"></div>
+            <div aria-hidden="true" class="hero-orb bottom-16 left-20 h-40 w-40 bg-sky-500/25"></div>
+
+            <div class="relative rounded-[2rem] border border-white/10 bg-slate-950/[0.92] p-4 shadow-[0_30px_120px_rgba(2,6,23,0.35)] ring-1 ring-cyan-400/10 dark:ring-cyan-300/10 sm:p-6">
+              <div class="hero-ring hidden sm:block"></div>
+              <div class="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.12),transparent_38%),linear-gradient(180deg,rgba(15,23,42,0.92),rgba(2,6,23,1))] p-5 sm:p-7">
+                <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="h-3 w-3 rounded-full bg-red-400"></span>
+                    <span class="h-3 w-3 rounded-full bg-amber-400"></span>
+                    <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
+                  </div>
+                  <div class="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-cyan-200">LIVE BATCH / BUILD MODE</div>
+                </div>
+
+                <div class="mt-6 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+                  <div class="glass-card rounded-[1.5rem] border-white/10 bg-white/5 p-5 text-white">
+                    <div class="flex items-center justify-between">
+                      <p class="font-display text-xl font-bold">AI App Runtime</p>
+                      <span class="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-200">
+                        <span class="h-2 w-2 rounded-full bg-emerald-300"></span>
+                        deployed
+                      </span>
+                    </div>
+                    <div class="mt-5 space-y-3 text-sm text-slate-300">
+                      <div class="terminal-line rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                        <span class="text-cyan-300">$</span> npm run mentor-build<span class="cursor-blink text-cyan-300">_</span>
+                      </div>
+                      <div class="terminal-line rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                        <span class="text-cyan-300">&gt;</span> Designing auth, AI prompts, and deployment pipelines
+                      </div>
+                      <div class="terminal-line rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                        <span class="text-cyan-300">&gt;</span> Shipping production-ready MERN SaaS projects
+                      </div>
+                    </div>
+                    <div class="mt-5 grid grid-cols-3 gap-3">
+                      <div class="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Stack</p>
+                        <p class="mt-2 font-semibold text-white">MERN + AI</p>
+                      </div>
+                      <div class="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Mode</p>
+                        <p class="mt-2 font-semibold text-white">Live Mentorship</p>
+                      </div>
+                      <div class="rounded-2xl border border-white/10 bg-white/5 p-3">
+                        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Output</p>
+                        <p class="mt-2 font-semibold text-white">Real Products</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="space-y-4">
+                    <div class="glass-card rounded-[1.5rem] border-white/10 bg-white/5 p-5 text-white">
+                      <p class="text-xs font-bold uppercase tracking-[0.22em] text-slate-400">Practical Mentorship</p>
+                      <p class="mt-3 text-3xl font-extrabold">6+ Years</p>
+                      <p class="mt-2 text-sm leading-7 text-slate-300">Learning from an active IT professional with delivery and deployment experience.</p>
+                    </div>
+                    <div class="glass-card rounded-[1.5rem] border-white/10 bg-white/5 p-5 text-white">
+                      <p class="text-xs font-bold uppercase tracking-[0.22em] text-slate-400">What you build</p>
+                      <div class="mt-4 space-y-3 text-sm text-slate-300">
+                        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                          <span>AI Resume Builder</span>
+                          <span class="font-semibold text-cyan-300">Launch-ready</span>
+                        </div>
+                        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                          <span>Interview Assistant</span>
+                          <span class="font-semibold text-cyan-300">LLM-integrated</span>
+                        </div>
+                        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                          <span>AI SaaS Dashboard</span>
+                          <span class="font-semibold text-cyan-300">Deployment included</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pointer-events-none absolute -left-3 top-[18%] hidden rounded-2xl border border-cyan-300/15 bg-slate-900/75 px-4 py-3 shadow-glow backdrop-blur-xl sm:block floating-card">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">Students</p>
+                <p class="mt-1 text-lg font-bold text-white">10,000+</p>
+              </div>
+              <div class="pointer-events-none absolute -right-4 top-[8%] hidden rounded-2xl border border-cyan-300/15 bg-slate-900/75 px-4 py-3 shadow-glow backdrop-blur-xl sm:block floating-card">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">Projects</p>
+                <p class="mt-1 text-lg font-bold text-white">500+</p>
+              </div>
+              <div class="pointer-events-none absolute bottom-4 left-6 hidden rounded-2xl border border-cyan-300/15 bg-slate-900/75 px-4 py-3 shadow-glow backdrop-blur-xl sm:block floating-card">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">Rating</p>
+                <p class="mt-1 text-lg font-bold text-white">4.8/5</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust Section -->
+      <section class="py-6 sm:py-8">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <article class="glass-card glass-border rounded-[1.75rem] p-6" data-reveal>
+              <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Students</p>
+              <p class="mt-4 font-display text-4xl font-extrabold text-slate-950 dark:text-white">10,000+</p>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Learners across college, career switches, and working professionals.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6" data-reveal style="--reveal-delay: 0.08s;">
+              <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Projects Built</p>
+              <p class="mt-4 font-display text-4xl font-extrabold text-slate-950 dark:text-white">500+</p>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Hands-on builds that mirror what companies actually ship.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6" data-reveal style="--reveal-delay: 0.16s;">
+              <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Student Rating</p>
+              <p class="mt-4 font-display text-4xl font-extrabold text-slate-950 dark:text-white">4.8/5</p>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Trusted for clarity, support, and career-focused execution.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6" data-reveal style="--reveal-delay: 0.24s;">
+              <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Community</p>
+              <p class="mt-4 font-display text-4xl font-extrabold text-slate-950 dark:text-white">1200+</p>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">High-signal peer network for accountability, wins, and debugging support.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl" data-reveal>
+            <div class="section-kicker mb-5">
+              <i data-lucide="cpu" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+              What You Actually Learn
+            </div>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">A mentorship stack built for how modern developers work.</h2>
+            <p class="mt-5 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">Every module is tied to real execution: building interfaces, structuring APIs, integrating AI, deploying to production, and preparing for interviews with portfolio-ready outcomes.</p>
+          </div>
+
+          <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+            <article class="glass-card glass-border rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-glow" data-reveal>
+              <i data-lucide="users" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Live mentorship</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Direct guidance, doubt solving, and feedback on the work you are actually building.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-glow" data-reveal style="--reveal-delay: 0.05s;">
+              <i data-lucide="layout-dashboard" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Real-world projects</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Projects designed to look credible in interviews and useful in your portfolio.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-glow" data-reveal style="--reveal-delay: 0.1s;">
+              <i data-lucide="bot" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">AI integrations</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Use OpenAI APIs, prompt patterns, embeddings, and agent-based flows in practice.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-glow" data-reveal style="--reveal-delay: 0.15s;">
+              <i data-lucide="cloud" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Deployment training</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Learn how to ship apps on modern hosting platforms without guesswork.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-glow" data-reveal style="--reveal-delay: 0.2s;">
+              <i data-lucide="file-text" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Resume preparation</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Package your learning into a strong profile that speaks to recruiters.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-glow" data-reveal>
+              <i data-lucide="briefcase-business" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Interview guidance</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Bridge the gap between coding tutorials and the expectations of actual hiring loops.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-glow" data-reveal style="--reveal-delay: 0.05s;">
+              <i data-lucide="layers-3" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">SaaS architecture</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Think in components, APIs, auth, billing-ready flows, and scalable product structure.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-glow" data-reveal style="--reveal-delay: 0.1s;">
+              <i data-lucide="shield-check" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Authentication systems</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Build secure login, protected routes, and production-minded user flows.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-glow" data-reveal style="--reveal-delay: 0.15s;">
+              <i data-lucide="database" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Vector databases</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Understand retrieval, embeddings, similarity search, and practical AI memory patterns.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-glow" data-reveal style="--reveal-delay: 0.2s;">
+              <i data-lucide="workflow" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">AI agents</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Move beyond chat UIs into orchestrated agent workflows that solve useful tasks.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Roadmap -->
+      <section id="roadmap" class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-3xl text-center" data-reveal>
+            <div class="section-kicker mb-5 justify-center">
+              <i data-lucide="calendar-days" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+              Curriculum Roadmap
+            </div>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">A clear path from first line of code to production-ready AI SaaS builder.</h2>
+            <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">Each milestone layers practical depth so beginners stay confident and experienced developers gain sharper execution.</p>
+          </div>
+
+          <div class="timeline mt-14 space-y-6 lg:space-y-8">
+            <article class="timeline-item timeline-left" data-reveal>
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6 lg:text-right">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">01</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">HTML/CSS Fundamentals</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Build responsive foundations, layout instincts, and clean component structure.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-right" data-reveal style="--reveal-delay: 0.04s;">
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">02</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">JavaScript Deep Dive</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Understand logic, async flows, APIs, state thinking, and debugging discipline.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-left" data-reveal style="--reveal-delay: 0.08s;">
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6 lg:text-right">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">03</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">React Mastery</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Build fast interfaces, reusable UI systems, and app-level product thinking.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-right" data-reveal style="--reveal-delay: 0.12s;">
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">04</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">Node.js + Express</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Design backend services, middleware, controllers, validation, and clean API structure.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-left" data-reveal style="--reveal-delay: 0.16s;">
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6 lg:text-right">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">05</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">MongoDB</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Work with schema design, relationships, queries, aggregation, and durable data models.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-right" data-reveal style="--reveal-delay: 0.2s;">
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">06</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">Authentication</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Protect user flows with token-based auth, route guards, and production-ready security practices.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-left" data-reveal>
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6 lg:text-right">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">07</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">REST APIs</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Build well-structured APIs that support frontend teams, testing, and scaling.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-right" data-reveal style="--reveal-delay: 0.04s;">
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">08</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">Deployment</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Ship to modern cloud platforms with environment setup, domain flows, and debugging tactics.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-left" data-reveal style="--reveal-delay: 0.08s;">
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6 lg:text-right">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">09</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">OpenAI APIs</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Integrate real AI capabilities into products with prompts, streaming, and response shaping.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-right" data-reveal style="--reveal-delay: 0.12s;">
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">10</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">AI Chatbots</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Create chat products with usable UI, context handling, and practical prompt engineering.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-left" data-reveal style="--reveal-delay: 0.16s;">
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6 lg:text-right">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">11</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">Vector DBs</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Implement retrieval systems using embeddings, indexing, and semantic search patterns.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-right" data-reveal style="--reveal-delay: 0.2s;">
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">12</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">AI Agents</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Coordinate tools, prompts, and decision loops to automate meaningful workflows.</p>
+              </div>
+            </article>
+            <article class="timeline-item timeline-left" data-reveal>
+              <span class="timeline-dot"></span>
+              <div class="glass-card glass-border rounded-[1.8rem] p-6 lg:text-right">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-cyan-500 dark:text-cyan-300">13</p>
+                <h3 class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">Full SaaS Project</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Combine everything into a polished product with deployment, AI features, and portfolio polish.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech Stack -->
+      <section class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div class="max-w-3xl" data-reveal>
+              <div class="section-kicker mb-5">
+                <i data-lucide="command" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                Production Stack
+              </div>
+              <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">The exact toolchain behind modern MERN + AI product workflows.</h2>
+            </div>
+            <p class="max-w-xl text-base leading-8 text-slate-600 dark:text-slate-300" data-reveal style="--reveal-delay: 0.08s;">You will learn where each tool fits in the lifecycle, not just how to click through setup. The goal is decision-making skill, not shallow exposure.</p>
+          </div>
+
+          <div class="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+            <article class="glass-card glass-border rounded-[1.75rem] p-5" data-reveal>
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/15 text-lg font-extrabold text-emerald-500 dark:text-emerald-300">M</div>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">MongoDB</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Flexible data modeling for real app backends.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-5" data-reveal style="--reveal-delay: 0.05s;">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950/10 text-lg font-extrabold text-slate-900 dark:bg-white/10 dark:text-white">Ex</div>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Express</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Backend APIs, middleware, and service structure.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-5" data-reveal style="--reveal-delay: 0.1s;">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-400/15 text-lg font-extrabold text-sky-500 dark:text-sky-300">R</div>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">React</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Composable interfaces and production UI architecture.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-5" data-reveal style="--reveal-delay: 0.15s;">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/15 text-lg font-extrabold text-emerald-500 dark:text-emerald-300">N</div>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Node.js</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Runtime for scalable product backends and tooling.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-5" data-reveal style="--reveal-delay: 0.2s;">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-400/15 text-lg font-extrabold text-cyan-500 dark:text-cyan-300">T</div>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Tailwind CSS</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Fast styling system for polished responsive interfaces.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-5" data-reveal>
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-400/15 text-lg font-extrabold text-cyan-500 dark:text-cyan-300">AI</div>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">OpenAI</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Prompting, chat, structured output, and assistants.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-5" data-reveal style="--reveal-delay: 0.05s;">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950/10 text-lg font-extrabold text-slate-900 dark:bg-white/10 dark:text-white">GH</div>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">GitHub</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Version control, collaboration, and developer workflow hygiene.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-5" data-reveal style="--reveal-delay: 0.1s;">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950/10 text-lg font-extrabold text-slate-900 dark:bg-white/10 dark:text-white">V</div>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Vercel</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Frontend hosting, previews, and fast deployment loops.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-5" data-reveal style="--reveal-delay: 0.15s;">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-400/15 text-lg font-extrabold text-amber-500 dark:text-amber-300">F</div>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Firebase</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Realtime features, auth options, and rapid product experiments.</p>
+            </article>
+            <article class="glass-card glass-border rounded-[1.75rem] p-5" data-reveal style="--reveal-delay: 0.2s;">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-400/15 text-lg font-extrabold text-indigo-500 dark:text-indigo-300">DB</div>
+              <h3 class="mt-5 text-xl font-bold text-slate-950 dark:text-white">Vector DB Tools</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Pinecone, pgvector, and RAG-oriented retrieval patterns.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Showcase -->
+      <section id="projects" class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl" data-reveal>
+            <div class="section-kicker mb-5">
+              <i data-lucide="rocket" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+              Project Showcase
+            </div>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">Build products that feel current, credible, and portfolio-worthy.</h2>
+            <p class="mt-5 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">Each project is positioned like a real product: strong use case, proper stack choices, usable UI, and deployable output.</p>
+          </div>
+
+          <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <article class="group glass-card glass-border rounded-[1.9rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-glowBlue" data-reveal>
+              <div class="rounded-[1.4rem] border border-cyan-400/15 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.22),transparent_42%),linear-gradient(180deg,rgba(2,6,23,0.96),rgba(15,23,42,0.88))] p-5 text-white">
+                <div class="flex items-center justify-between text-xs uppercase tracking-[0.22em] text-slate-300">
+                  <span>AI Resume Builder</span>
+                  <span>LLM UX</span>
+                </div>
+                <div class="mt-5 space-y-3">
+                  <div class="h-3 w-4/5 rounded-full bg-cyan-300/30"></div>
+                  <div class="h-3 w-3/5 rounded-full bg-white/20"></div>
+                  <div class="grid grid-cols-2 gap-3 pt-2">
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-sm">Resume scoring</div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-sm">ATS prompts</div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="mt-6 text-2xl font-bold text-slate-950 transition group-hover:text-cyan-500 dark:text-white dark:group-hover:text-cyan-300">AI Resume Builder</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Generate, refine, and evaluate resumes using practical prompt flows and user data pipelines.</p>
+            </article>
+            <article class="group glass-card glass-border rounded-[1.9rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-glowBlue" data-reveal style="--reveal-delay: 0.08s;">
+              <div class="rounded-[1.4rem] border border-cyan-400/15 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.18),transparent_40%),linear-gradient(180deg,rgba(2,6,23,0.96),rgba(15,23,42,0.88))] p-5 text-white">
+                <div class="flex items-center justify-between text-xs uppercase tracking-[0.22em] text-slate-300">
+                  <span>ChatGPT Clone</span>
+                  <span>Streaming</span>
+                </div>
+                <div class="mt-5 space-y-3 text-sm text-slate-300">
+                  <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">User: Explain REST APIs like a mentor</div>
+                  <div class="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-4 py-3">Assistant: Let us connect the frontend to a real backend flow...</div>
+                </div>
+              </div>
+              <h3 class="mt-6 text-2xl font-bold text-slate-950 transition group-hover:text-cyan-500 dark:text-white dark:group-hover:text-cyan-300">ChatGPT Clone</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Learn chat UI, history handling, streaming responses, and prompt architecture.</p>
+            </article>
+            <article class="group glass-card glass-border rounded-[1.9rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-glowBlue" data-reveal style="--reveal-delay: 0.16s;">
+              <div class="rounded-[1.4rem] border border-cyan-400/15 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_38%),linear-gradient(180deg,rgba(2,6,23,0.96),rgba(15,23,42,0.88))] p-5 text-white">
+                <div class="flex items-center justify-between text-xs uppercase tracking-[0.22em] text-slate-300">
+                  <span>AI SaaS Dashboard</span>
+                  <span>Analytics</span>
+                </div>
+                <div class="mt-5 grid grid-cols-3 gap-3">
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-center text-sm">Usage</div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-center text-sm">Credits</div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-3 text-center text-sm">Insights</div>
+                </div>
+                <div class="mt-4 h-28 rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))]"></div>
+              </div>
+              <h3 class="mt-6 text-2xl font-bold text-slate-950 transition group-hover:text-cyan-500 dark:text-white dark:group-hover:text-cyan-300">AI SaaS Dashboard</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Build a multi-feature dashboard with auth, billing-ready structure, and AI-powered tools.</p>
+            </article>
+            <article class="group glass-card glass-border rounded-[1.9rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-glowBlue" data-reveal>
+              <div class="rounded-[1.4rem] border border-cyan-400/15 bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,0.18),transparent_38%),linear-gradient(180deg,rgba(2,6,23,0.96),rgba(15,23,42,0.88))] p-5 text-white">
+                <div class="flex items-center justify-between text-xs uppercase tracking-[0.22em] text-slate-300">
+                  <span>Real-time MERN Chat App</span>
+                  <span>Sockets</span>
+                </div>
+                <div class="mt-5 space-y-3">
+                  <div class="flex gap-3">
+                    <div class="h-10 w-10 rounded-2xl bg-emerald-400/20"></div>
+                    <div class="h-10 flex-1 rounded-2xl bg-white/10"></div>
+                  </div>
+                  <div class="flex gap-3">
+                    <div class="h-10 w-10 rounded-2xl bg-cyan-400/20"></div>
+                    <div class="h-10 flex-1 rounded-2xl bg-white/10"></div>
+                  </div>
+                  <div class="h-14 rounded-2xl border border-white/10 bg-white/5"></div>
+                </div>
+              </div>
+              <h3 class="mt-6 text-2xl font-bold text-slate-950 transition group-hover:text-cyan-500 dark:text-white dark:group-hover:text-cyan-300">Real-time MERN Chat App</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Cover sockets, messaging UX, presence, and multi-user backend coordination.</p>
+            </article>
+            <article class="group glass-card glass-border rounded-[1.9rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-glowBlue" data-reveal style="--reveal-delay: 0.08s;">
+              <div class="rounded-[1.4rem] border border-cyan-400/15 bg-[radial-gradient(circle_at_top_left,rgba(245,158,11,0.18),transparent_38%),linear-gradient(180deg,rgba(2,6,23,0.96),rgba(15,23,42,0.88))] p-5 text-white">
+                <div class="flex items-center justify-between text-xs uppercase tracking-[0.22em] text-slate-300">
+                  <span>AI Interview Assistant</span>
+                  <span>Coaching</span>
+                </div>
+                <div class="mt-5 rounded-3xl border border-white/10 bg-white/5 p-4 text-sm text-slate-200">
+                  Mock interview feedback<br>
+                  Behavioral + technical prompts<br>
+                  Confidence loops and scorecards
+                </div>
+              </div>
+              <h3 class="mt-6 text-2xl font-bold text-slate-950 transition group-hover:text-cyan-500 dark:text-white dark:group-hover:text-cyan-300">AI Interview Assistant</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Transform AI into a practical preparation tool for placements and job switches.</p>
+            </article>
+            <article class="group glass-card glass-border rounded-[1.9rem] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-glowBlue" data-reveal style="--reveal-delay: 0.16s;">
+              <div class="rounded-[1.4rem] border border-cyan-400/15 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.18),transparent_38%),linear-gradient(180deg,rgba(2,6,23,0.96),rgba(15,23,42,0.88))] p-5 text-white">
+                <div class="flex items-center justify-between text-xs uppercase tracking-[0.22em] text-slate-300">
+                  <span>Portfolio Generator</span>
+                  <span>Branding</span>
+                </div>
+                <div class="mt-5 grid grid-cols-2 gap-3">
+                  <div class="h-20 rounded-2xl border border-white/10 bg-white/5"></div>
+                  <div class="h-20 rounded-2xl border border-white/10 bg-white/5"></div>
+                  <div class="col-span-2 h-12 rounded-2xl border border-white/10 bg-white/5"></div>
+                </div>
+              </div>
+              <h3 class="mt-6 text-2xl font-bold text-slate-950 transition group-hover:text-cyan-500 dark:text-white dark:group-hover:text-cyan-300">Portfolio Generator</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Create sleek developer portfolios with content systems, visuals, and deploy-ready delivery.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Different -->
+      <section class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-6 xl:grid-cols-[0.95fr_1.05fr] xl:items-center">
+            <div class="glass-card glass-border rounded-[2rem] p-8 sm:p-10" data-reveal>
+              <div class="section-kicker mb-5">
+                <i data-lucide="scan-search" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                Why This Course Is Different
+              </div>
+              <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl">Practical mentorship for developers who want relevance, not recycled theory.</h2>
+              <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">The course is positioned around industry reality: how teams think, what production apps require, and how AI fits into modern engineering instead of replacing it.</p>
+              <div class="mt-8 grid gap-3">
+                <div class="flex items-start gap-3 rounded-2xl border border-rose-300/20 bg-rose-300/8 p-4 dark:border-rose-400/15 dark:bg-rose-400/8">
+                  <i data-lucide="x" class="mt-1 h-5 w-5 text-rose-500 dark:text-rose-300"></i>
+                  <div>
+                    <p class="font-bold text-slate-950 dark:text-white">Not outdated tutorial teaching</p>
+                    <p class="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">No shallow copy-paste teaching that stops before deployment or architecture decisions.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 rounded-2xl border border-cyan-400/20 bg-cyan-400/8 p-4 dark:border-cyan-300/15 dark:bg-cyan-300/8">
+                  <i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i>
+                  <div>
+                    <p class="font-bold text-slate-950 dark:text-white">Learn workflows used in real companies</p>
+                    <p class="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">Translate features into APIs, frontend systems, deployments, and maintainable code.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 rounded-2xl border border-cyan-400/20 bg-cyan-400/8 p-4 dark:border-cyan-300/15 dark:bg-cyan-300/8">
+                  <i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i>
+                  <div>
+                    <p class="font-bold text-slate-950 dark:text-white">Build production-ready projects</p>
+                    <p class="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">Focus on product shape, polish, architecture, and deployment rather than isolated snippets.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 rounded-2xl border border-cyan-400/20 bg-cyan-400/8 p-4 dark:border-cyan-300/15 dark:bg-cyan-300/8">
+                  <i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i>
+                  <div>
+                    <p class="font-bold text-slate-950 dark:text-white">Mentorship from an active developer</p>
+                    <p class="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">You are learning from someone who uses these patterns in real-world workflows.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 rounded-2xl border border-cyan-400/20 bg-cyan-400/8 p-4 dark:border-cyan-300/15 dark:bg-cyan-300/8">
+                  <i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i>
+                  <div>
+                    <p class="font-bold text-slate-950 dark:text-white">Learn AI tools developers actually use</p>
+                    <p class="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-300">From prompting and RAG to agents and product UX, tied directly to useful software ideas.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid gap-5" data-reveal style="--reveal-delay: 0.08s;">
+              <article class="glass-card glass-border rounded-[2rem] p-8 sm:p-10">
+                <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Core Positioning</p>
+                <h3 class="mt-4 font-display text-3xl font-extrabold text-slate-950 dark:text-white">Working IT professional mentoring future developers.</h3>
+                <p class="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">That changes the teaching lens. The emphasis is on systems, decision-making, debugging, deployment, collaboration, and outcomes that hold up outside the classroom.</p>
+              </article>
+              <article class="glass-card glass-border rounded-[2rem] p-8 sm:p-10">
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Ideal for</p>
+                    <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                      <li>College students starting from zero</li>
+                      <li>Working professionals upskilling into MERN + AI</li>
+                      <li>React developers adding AI workflows</li>
+                      <li>Indian students preparing for tech jobs</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">You leave with</p>
+                    <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                      <li>Production-style portfolio projects</li>
+                      <li>Sharper deployment confidence</li>
+                      <li>Real interview talking points</li>
+                      <li>Practical AI engineering context</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="mt-8 rounded-[1.6rem] border border-cyan-400/15 bg-[linear-gradient(135deg,rgba(34,211,238,0.12),rgba(99,102,241,0.08))] p-5">
+                  <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-200">Industry-Focused MERN + AI Mentorship</p>
+                  <p class="mt-3 text-xl font-bold text-slate-950 dark:text-white">Learn what real developers actually use.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Instructor -->
+      <section id="instructor" class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-6 xl:grid-cols-[0.8fr_1.2fr] xl:items-center">
+            <div class="glass-card glass-border relative overflow-hidden rounded-[2.1rem] p-8 sm:p-10" data-reveal>
+              <div aria-hidden="true" class="absolute inset-x-0 top-0 h-28 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.18),transparent_70%)]"></div>
+              <div class="relative mx-auto flex h-52 w-52 items-center justify-center rounded-[2.5rem] border border-cyan-400/20 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.28),rgba(15,23,42,0.96))] text-7xl font-extrabold text-white shadow-glow">
+                A
+                <div class="absolute -left-4 top-6 rounded-full border border-cyan-300/20 bg-slate-900/80 px-3 py-2 text-xs font-semibold tracking-[0.2em] text-cyan-200">6+ YEARS</div>
+                <div class="absolute -right-6 bottom-8 rounded-full border border-cyan-300/20 bg-slate-900/80 px-3 py-2 text-xs font-semibold tracking-[0.2em] text-cyan-200">IT PRO</div>
+              </div>
+              <div class="mt-8 text-center">
+                <h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white">Akhshy</h2>
+                <p class="mt-2 text-sm font-bold uppercase tracking-[0.26em] text-cyan-600 dark:text-cyan-300">Instructor · YouTube Creator · Mentor</p>
+                <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">YouTube creator of Code Wid Mapla and a working IT professional focused on real engineering workflows.</p>
+              </div>
+            </div>
+
+            <div class="grid gap-5" data-reveal style="--reveal-delay: 0.08s;">
+              <div>
+                <div class="section-kicker mb-5">
+                  <i data-lucide="graduation-cap" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                  Meet Your Mentor
+                </div>
+                <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">Industry-focused engineering mentorship from someone building in the real world.</h2>
+                <p class="mt-5 max-w-3xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">Akhshy brings 6+ years of real IT experience into every lesson. The mentorship is shaped by product thinking, delivery pressure, debugging reality, and what hiring managers care about when they look at projects and skill growth.</p>
+              </div>
+
+              <div class="grid gap-5 md:grid-cols-2">
+                <article class="glass-card glass-border rounded-[1.8rem] p-6">
+                  <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Positioning</p>
+                  <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                    <li>Working IT professional mentoring future developers</li>
+                    <li>Teaching real-world workflows used inside companies</li>
+                    <li>Industry-focused engineering mentorship</li>
+                  </ul>
+                </article>
+                <article class="glass-card glass-border rounded-[1.8rem] p-6">
+                  <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Community presence</p>
+                  <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                    <li>6+ years of practical experience</li>
+                    <li>YouTube creator: Code Wid Mapla</li>
+                    <li>Mentor to students, beginners, and professionals</li>
+                  </ul>
+                </article>
+              </div>
+
+              <blockquote class="glass-card glass-border rounded-[1.9rem] p-8">
+                <i data-lucide="quote" class="h-9 w-9 text-cyan-500 dark:text-cyan-300"></i>
+                <p class="mt-4 font-display text-3xl font-bold leading-tight text-slate-950 dark:text-white">“I teach what I actually use in real projects.”</p>
+                <footer class="mt-4 text-sm font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Akhshy · EMC Course</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-3xl text-center" data-reveal>
+            <div class="section-kicker mb-5 justify-center">
+              <i data-lucide="star" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+              Testimonials
+            </div>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">Confidence grows faster when the learning feels real.</h2>
+          </div>
+
+          <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <article class="glass-card glass-border rounded-[1.8rem] p-6" data-reveal>
+              <div class="flex items-center gap-1 text-amber-400">
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              </div>
+              <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">“I joined as a college student with zero coding confidence. The projects made everything click because they felt like real products, not classroom exercises.”</p>
+              <div class="mt-6">
+                <p class="font-bold text-slate-950 dark:text-white">Nivetha R.</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Final year student</p>
+              </div>
+            </article>
+            <article class="glass-card glass-border rounded-[1.8rem] p-6" data-reveal style="--reveal-delay: 0.06s;">
+              <div class="flex items-center gap-1 text-amber-400">
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              </div>
+              <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">“Most courses stop at basic CRUD. Here I finally understood deployment, architecture, and how AI can fit into something a company would actually build.”</p>
+              <div class="mt-6">
+                <p class="font-bold text-slate-950 dark:text-white">Fazil P.</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Frontend developer upskilling into AI</p>
+              </div>
+            </article>
+            <article class="glass-card glass-border rounded-[1.8rem] p-6" data-reveal style="--reveal-delay: 0.12s;">
+              <div class="flex items-center gap-1 text-amber-400">
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              </div>
+              <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">“As a working professional, I needed signal not noise. The mentorship helped me build projects I can discuss in interviews without feeling fake.”</p>
+              <div class="mt-6">
+                <p class="font-bold text-slate-950 dark:text-white">Akhila S.</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Career switcher</p>
+              </div>
+            </article>
+            <article class="glass-card glass-border rounded-[1.8rem] p-6" data-reveal>
+              <div class="flex items-center gap-1 text-amber-400">
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              </div>
+              <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">“The AI modules were practical instead of hype. We used them where they made product sense, which gave me a much clearer picture of modern engineering.”</p>
+              <div class="mt-6">
+                <p class="font-bold text-slate-950 dark:text-white">Rahul K.</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">React developer</p>
+              </div>
+            </article>
+            <article class="glass-card glass-border rounded-[1.8rem] p-6" data-reveal style="--reveal-delay: 0.06s;">
+              <div class="flex items-center gap-1 text-amber-400">
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              </div>
+              <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">“I liked that Akhshy teaches like someone inside the industry. The mentorship support and project reviews improved both my confidence and coding quality.”</p>
+              <div class="mt-6">
+                <p class="font-bold text-slate-950 dark:text-white">Jasna M.</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Working professional</p>
+              </div>
+            </article>
+            <article class="glass-card glass-border rounded-[1.8rem] p-6" data-reveal style="--reveal-delay: 0.12s;">
+              <div class="flex items-center gap-1 text-amber-400">
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              </div>
+              <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">“The combination of mentorship, AI, and deployment training made this feel like a full-stack career accelerator rather than a standard course.”</p>
+              <div class="mt-6">
+                <p class="font-bold text-slate-950 dark:text-white">Arjun B.</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Beginner learner</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section id="pricing" class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-3xl text-center" data-reveal>
+            <div class="section-kicker mb-5 justify-center">
+              <i data-lucide="circle-dollar-sign" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+              Pricing
+            </div>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">Choose the mentorship depth that matches your build goals.</h2>
+            <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">Both plans are designed to move fast. The Pro AI plan is optimized for learners who want the strongest portfolio, AI depth, and career support.</p>
+          </div>
+
+          <div class="mt-12 grid gap-6 lg:grid-cols-2">
+            <article class="glass-card glass-border rounded-[2rem] p-8 sm:p-10" data-reveal>
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Starter Plan</p>
+                  <h3 class="mt-3 font-display text-3xl font-extrabold text-slate-950 dark:text-white">₹1999</h3>
+                  <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Strong foundation for beginners stepping into real MERN development.</p>
+                </div>
+                <span class="rounded-full border border-slate-300/70 bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-700 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-300">Core Access</span>
+              </div>
+              <ul class="mt-8 space-y-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                <li class="flex gap-3"><i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i><span>Core MERN curriculum</span></li>
+                <li class="flex gap-3"><i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i><span>Beginner access</span></li>
+                <li class="flex gap-3"><i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i><span>Community access</span></li>
+              </ul>
+              <a href="#countdown" class="mt-8 inline-flex items-center justify-center rounded-full border border-slate-300/70 bg-white/80 px-6 py-3 text-sm font-bold text-slate-900 transition hover:border-cyan-400/40 hover:text-cyan-500 dark:border-slate-700 dark:bg-slate-900/80 dark:text-white dark:hover:border-cyan-300/30 dark:hover:text-cyan-300">Choose Starter</a>
+            </article>
+
+            <article class="glass-card glass-border rounded-[2rem] border-cyan-400/20 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.18),transparent_48%),linear-gradient(180deg,rgba(255,255,255,0.85),rgba(238,248,255,0.8))] p-8 shadow-glow dark:bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.18),transparent_48%),linear-gradient(180deg,rgba(8,15,31,0.96),rgba(4,10,22,0.94))] sm:p-10" data-reveal style="--reveal-delay: 0.08s;">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <span class="inline-flex rounded-full border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-cyan-600 dark:text-cyan-200">Most Popular</span>
+                  <p class="mt-4 text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Pro AI Plan</p>
+                  <h3 class="mt-3 font-display text-3xl font-extrabold text-slate-950 dark:text-white">₹2999</h3>
+                  <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">For learners who want the full MERN + AI journey with stronger mentorship leverage.</p>
+                </div>
+                <span class="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-cyan-600 dark:text-cyan-200">Pro Track</span>
+              </div>
+              <ul class="mt-8 space-y-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                <li class="flex gap-3"><i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i><span>MERN + AI modules</span></li>
+                <li class="flex gap-3"><i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i><span>AI projects</span></li>
+                <li class="flex gap-3"><i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i><span>Deployment training</span></li>
+                <li class="flex gap-3"><i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i><span>Resume and interview guidance</span></li>
+                <li class="flex gap-3"><i data-lucide="check" class="mt-1 h-5 w-5 text-cyan-500 dark:text-cyan-300"></i><span>Priority mentorship</span></li>
+              </ul>
+              <a href="#countdown" class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-sm font-bold text-white shadow-glowBlue transition duration-300 hover:-translate-y-0.5 hover:bg-slate-900 dark:bg-cyan-400 dark:text-slate-950 dark:hover:bg-cyan-300">
+                Enroll Now
+                <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Countdown -->
+      <section id="countdown" class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="glass-card glass-border rounded-[2.2rem] p-8 sm:p-10 lg:p-12" data-reveal>
+            <div class="grid gap-8 xl:grid-cols-[0.85fr_1.15fr] xl:items-center">
+              <div>
+                <div class="section-kicker mb-5">
+                  <i data-lucide="timer-reset" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                  Next Batch Starts Soon
+                </div>
+                <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl">Seats move fast when the mentorship is this hands-on.</h2>
+                <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">Reserve your spot early to start the next batch with live support, practical project guidance, and a roadmap designed to keep momentum high.</p>
+                <p id="batch-date" class="mt-5 text-sm font-bold uppercase tracking-[0.22em] text-cyan-600 dark:text-cyan-300">Batch date loading...</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <div class="glass-card rounded-[1.6rem] p-5 text-center">
+                  <p id="days" class="countdown-value font-display text-4xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">12</p>
+                  <p class="mt-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Days</p>
+                </div>
+                <div class="glass-card rounded-[1.6rem] p-5 text-center">
+                  <p id="hours" class="countdown-value font-display text-4xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">08</p>
+                  <p class="mt-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Hours</p>
+                </div>
+                <div class="glass-card rounded-[1.6rem] p-5 text-center">
+                  <p id="minutes" class="countdown-value font-display text-4xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">44</p>
+                  <p class="mt-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Minutes</p>
+                </div>
+                <div class="glass-card rounded-[1.6rem] p-5 text-center">
+                  <p id="seconds" class="countdown-value font-display text-4xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">19</p>
+                  <p class="mt-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Seconds</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="py-20 sm:py-24">
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-3xl text-center" data-reveal>
+            <div class="section-kicker mb-5 justify-center">
+              <i data-lucide="badge-help" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+              FAQ
+            </div>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">Questions serious learners usually ask before joining.</h2>
+          </div>
+
+          <div class="mt-12 space-y-4">
+            <article class="glass-card glass-border rounded-[1.7rem]" data-reveal>
+              <button type="button" class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" data-faq-button aria-expanded="true" aria-controls="faq-1">
+                <span class="text-lg font-bold text-slate-950 dark:text-white">Is this beginner friendly?</span>
+                <i data-lucide="chevron-down" data-faq-icon class="h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400"></i>
+              </button>
+              <div id="faq-1" class="faq-answer px-6 pb-6 text-sm leading-8 text-slate-600 dark:text-slate-300">Yes. The roadmap starts from fundamentals and builds upward carefully. Beginners are guided toward product thinking without being thrown into advanced topics too early.</div>
+            </article>
+            <article class="glass-card glass-border rounded-[1.7rem]" data-reveal style="--reveal-delay: 0.05s;">
+              <button type="button" class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" data-faq-button aria-expanded="false" aria-controls="faq-2">
+                <span class="text-lg font-bold text-slate-950 dark:text-white">Will AI replace developers?</span>
+                <i data-lucide="chevron-down" data-faq-icon class="h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400"></i>
+              </button>
+              <div id="faq-2" class="faq-answer px-6 pb-6 text-sm leading-8 text-slate-600 dark:text-slate-300" hidden>No. Developers who know how to use AI well will outperform developers who ignore it. The course focuses on integrating AI into real software workflows instead of treating it like hype.</div>
+            </article>
+            <article class="glass-card glass-border rounded-[1.7rem]" data-reveal style="--reveal-delay: 0.1s;">
+              <button type="button" class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" data-faq-button aria-expanded="false" aria-controls="faq-3">
+                <span class="text-lg font-bold text-slate-950 dark:text-white">Do I need coding experience?</span>
+                <i data-lucide="chevron-down" data-faq-icon class="h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400"></i>
+              </button>
+              <div id="faq-3" class="faq-answer px-6 pb-6 text-sm leading-8 text-slate-600 dark:text-slate-300" hidden>No prior experience is required for the Starter track. If you already know React, the AI and product sections will help you move into modern full stack workflows faster.</div>
+            </article>
+            <article class="glass-card glass-border rounded-[1.7rem]" data-reveal style="--reveal-delay: 0.15s;">
+              <button type="button" class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" data-faq-button aria-expanded="false" aria-controls="faq-4">
+                <span class="text-lg font-bold text-slate-950 dark:text-white">Is mentorship live?</span>
+                <i data-lucide="chevron-down" data-faq-icon class="h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400"></i>
+              </button>
+              <div id="faq-4" class="faq-answer px-6 pb-6 text-sm leading-8 text-slate-600 dark:text-slate-300" hidden>Yes. The course emphasizes live mentorship, direct support, doubt clarification, and guidance shaped around the projects you are building.</div>
+            </article>
+            <article class="glass-card glass-border rounded-[1.7rem]" data-reveal style="--reveal-delay: 0.2s;">
+              <button type="button" class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" data-faq-button aria-expanded="false" aria-controls="faq-5">
+                <span class="text-lg font-bold text-slate-950 dark:text-white">Will projects be portfolio-ready?</span>
+                <i data-lucide="chevron-down" data-faq-icon class="h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400"></i>
+              </button>
+              <div id="faq-5" class="faq-answer px-6 pb-6 text-sm leading-8 text-slate-600 dark:text-slate-300" hidden>That is a core goal. The projects are intentionally framed as real products so you can discuss architecture, AI usage, and deployment decisions credibly in interviews.</div>
+            </article>
+            <article class="glass-card glass-border rounded-[1.7rem]" data-reveal style="--reveal-delay: 0.25s;">
+              <button type="button" class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" data-faq-button aria-expanded="false" aria-controls="faq-6">
+                <span class="text-lg font-bold text-slate-950 dark:text-white">Will deployment be taught?</span>
+                <i data-lucide="chevron-down" data-faq-icon class="h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400"></i>
+              </button>
+              <div id="faq-6" class="faq-answer px-6 pb-6 text-sm leading-8 text-slate-600 dark:text-slate-300" hidden>Yes. Deployment is part of the learning loop because real developers are expected to ship, observe, and debug applications beyond local development.</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community -->
+      <section class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="glass-card glass-border overflow-hidden rounded-[2.2rem] p-8 sm:p-10 lg:p-12" data-reveal>
+            <div class="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
+              <div>
+                <div class="section-kicker mb-5">
+                  <i data-lucide="messages-square" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                  Community Layer
+                </div>
+                <h2 class="font-display text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl">Stay in motion with a community built around execution.</h2>
+                <p class="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">Join a high-signal Discord or WhatsApp learning space where doubts get resolved, wins are shared, and momentum is easier to maintain between sessions.</p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                  <span class="glow-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                    <i data-lucide="message-circle" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                    Daily doubt support
+                  </span>
+                  <span class="glow-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                    <i data-lucide="users" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                    Peer accountability
+                  </span>
+                  <span class="glow-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                    <i data-lucide="target" class="h-4 w-4 text-cyan-500 dark:text-cyan-300"></i>
+                    Placement-minded guidance
+                  </span>
+                </div>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <article class="glass-card rounded-[1.7rem] p-6">
+                  <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Community Members</p>
+                  <p class="mt-4 font-display text-4xl font-extrabold text-slate-950 dark:text-white">1200+</p>
+                  <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">A growing network of learners and builders.</p>
+                </article>
+                <article class="glass-card rounded-[1.7rem] p-6">
+                  <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Weekly Activity</p>
+                  <p class="mt-4 font-display text-4xl font-extrabold text-slate-950 dark:text-white">350+</p>
+                  <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Questions, demos, wins, and debugging discussions.</p>
+                </article>
+                <article class="glass-card rounded-[1.7rem] p-6 sm:col-span-2">
+                  <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                      <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Where people connect</p>
+                      <p class="mt-3 text-2xl font-bold text-slate-950 dark:text-white">Discord + WhatsApp groups</p>
+                    </div>
+                    <a href="#pricing" class="inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-900 dark:bg-cyan-400 dark:text-slate-950 dark:hover:bg-cyan-300">Join the community</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="relative overflow-hidden rounded-[2.4rem] border border-cyan-400/20 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.22),transparent_40%),linear-gradient(135deg,rgba(15,23,42,0.98),rgba(2,6,23,0.98))] p-8 text-white shadow-[0_30px_120px_rgba(2,6,23,0.45)] sm:p-10 lg:p-14" data-reveal>
+            <div aria-hidden="true" class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-cyan-400/15 blur-3xl"></div>
+            <div aria-hidden="true" class="absolute -left-10 bottom-0 h-56 w-56 rounded-full bg-indigo-400/15 blur-3xl"></div>
+            <div class="relative z-10 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.24em] text-cyan-200">Final CTA</p>
+                <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">Start building real AI applications today.</h2>
+                <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">If you want a MERN + AI mentorship program that feels aligned with industry reality, EMC Course is built for that exact outcome.</p>
+              </div>
+              <div class="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-end">
+                <a href="#pricing" class="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-400 px-7 py-4 text-sm font-bold text-slate-950 shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-cyan-300">
+                  Enroll Now
+                  <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                </a>
+                <a href="#roadmap" class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-4 text-sm font-bold text-white transition hover:border-cyan-300/30 hover:bg-cyan-300/10">View Curriculum</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200/80 py-10 dark:border-slate-800/80">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
+        <div>
+          <a href="#hero" class="inline-flex items-center gap-3">
+            <span class="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-400/25 bg-slate-950 text-lg font-extrabold text-cyan-300 shadow-glow dark:border-cyan-300/15 dark:bg-slate-900">EM</span>
+            <span>
+              <span class="block font-display text-lg font-bold tracking-tight text-slate-950 dark:text-white">EMC Course</span>
+              <span class="block text-xs font-semibold tracking-[0.24em] text-slate-500 dark:text-slate-400">ERROR MAKES CLEVER</span>
+            </span>
+          </a>
+          <p class="mt-5 max-w-md text-sm leading-7 text-slate-600 dark:text-slate-300">Industry-focused MERN + AI mentorship for learners who want to build real applications with practical engineering depth.</p>
+        </div>
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Quick Links</p>
+          <div class="mt-4 grid gap-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
+            <a href="#features" class="transition hover:text-cyan-500 dark:hover:text-cyan-300">Features</a>
+            <a href="#roadmap" class="transition hover:text-cyan-500 dark:hover:text-cyan-300">Curriculum</a>
+            <a href="#projects" class="transition hover:text-cyan-500 dark:hover:text-cyan-300">Projects</a>
+            <a href="#pricing" class="transition hover:text-cyan-500 dark:hover:text-cyan-300">Pricing</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Social</p>
+          <div class="mt-4 grid gap-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
+            <a href="#" class="transition hover:text-cyan-500 dark:hover:text-cyan-300">YouTube</a>
+            <a href="#" class="transition hover:text-cyan-500 dark:hover:text-cyan-300">Instagram</a>
+            <a href="#" class="transition hover:text-cyan-500 dark:hover:text-cyan-300">Discord</a>
+            <a href="#" class="transition hover:text-cyan-500 dark:hover:text-cyan-300">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-slate-200/80 px-4 pt-6 text-sm text-slate-500 dark:border-slate-800/80 dark:text-slate-400 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        <p>© <span id="year"></span> EMC Course. All rights reserved.</p>
+        <p>Built for modern MERN + AI learners by Error Makes Clever.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const root = document.documentElement;
+      const body = document.body;
+      const themeButtons = document.querySelectorAll('[data-theme-toggle]');
+      const mobileToggle = document.querySelector('[data-mobile-toggle]');
+      const mobilePanel = document.querySelector('[data-mobile-panel]');
+      const openIcon = document.querySelector('[data-menu-open]');
+      const closeIcon = document.querySelector('[data-menu-close]');
+      const navLinks = document.querySelectorAll('[data-mobile-panel] a');
+      const faqButtons = document.querySelectorAll('[data-faq-button]');
+      const revealElements = document.querySelectorAll('[data-reveal]');
+      const year = document.getElementById('year');
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      const setTheme = function (theme) {
+        const isDark = theme === 'dark';
+        root.classList.toggle('dark', isDark);
+        localStorage.setItem('emc-course-theme', isDark ? 'dark' : 'light');
+        themeButtons.forEach(function (button) {
+          button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        });
+      };
+
+      setTheme(root.classList.contains('dark') ? 'dark' : 'light');
+
+      themeButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          setTheme(root.classList.contains('dark') ? 'light' : 'dark');
+        });
+      });
+
+      const setMobileMenu = function (isOpen) {
+        if (!mobileToggle || !mobilePanel) {
+          return;
+        }
+
+        mobileToggle.setAttribute('aria-expanded', String(isOpen));
+        mobilePanel.hidden = !isOpen;
+
+        if (openIcon && closeIcon) {
+          openIcon.classList.toggle('hidden', isOpen);
+          closeIcon.classList.toggle('hidden', !isOpen);
+        }
+      };
+
+      if (mobileToggle) {
+        mobileToggle.addEventListener('click', function () {
+          const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+          setMobileMenu(!expanded);
+        });
+      }
+
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          setMobileMenu(false);
+        });
+      });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries, currentObserver) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.14,
+          rootMargin: '0px 0px -10% 0px'
+        });
+
+        revealElements.forEach(function (element) {
+          observer.observe(element);
+        });
+      } else {
+        revealElements.forEach(function (element) {
+          element.classList.add('revealed');
+        });
+      }
+
+      faqButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          const targetId = button.getAttribute('aria-controls');
+          const target = targetId ? document.getElementById(targetId) : null;
+          const willOpen = button.getAttribute('aria-expanded') !== 'true';
+
+          faqButtons.forEach(function (otherButton) {
+            const otherId = otherButton.getAttribute('aria-controls');
+            const otherTarget = otherId ? document.getElementById(otherId) : null;
+            const otherIcon = otherButton.querySelector('[data-faq-icon]');
+
+            otherButton.setAttribute('aria-expanded', 'false');
+            if (otherTarget) {
+              otherTarget.hidden = true;
+            }
+            if (otherIcon) {
+              otherIcon.classList.remove('rotate-180');
+            }
+          });
+
+          if (target && willOpen) {
+            button.setAttribute('aria-expanded', 'true');
+            target.hidden = false;
+            const icon = button.querySelector('[data-faq-icon]');
+            if (icon) {
+              icon.classList.add('rotate-180');
+            }
+          }
+        });
+      });
+
+      const targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + 12);
+      targetDate.setHours(20, 0, 0, 0);
+
+      const batchDate = document.getElementById('batch-date');
+      if (batchDate) {
+        batchDate.textContent = 'Next batch starts ' + new Intl.DateTimeFormat('en-IN', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit'
+        }).format(targetDate) + ' IST';
+      }
+
+      const countdownMap = {
+        days: document.getElementById('days'),
+        hours: document.getElementById('hours'),
+        minutes: document.getElementById('minutes'),
+        seconds: document.getElementById('seconds')
+      };
+
+      const updateCountdown = function () {
+        const now = new Date();
+        const difference = targetDate.getTime() - now.getTime();
+
+        if (difference <= 0) {
+          Object.keys(countdownMap).forEach(function (key) {
+            if (countdownMap[key]) {
+              countdownMap[key].textContent = '00';
+            }
+          });
+          return;
+        }
+
+        const day = 24 * 60 * 60 * 1000;
+        const hour = 60 * 60 * 1000;
+        const minute = 60 * 1000;
+
+        const days = Math.floor(difference / day);
+        const hours = Math.floor((difference % day) / hour);
+        const minutes = Math.floor((difference % hour) / minute);
+        const seconds = Math.floor((difference % minute) / 1000);
+
+        if (countdownMap.days) countdownMap.days.textContent = String(days).padStart(2, '0');
+        if (countdownMap.hours) countdownMap.hours.textContent = String(hours).padStart(2, '0');
+        if (countdownMap.minutes) countdownMap.minutes.textContent = String(minutes).padStart(2, '0');
+        if (countdownMap.seconds) countdownMap.seconds.textContent = String(seconds).padStart(2, '0');
+      };
+
+      updateCountdown();
+      window.setInterval(updateCountdown, 1000);
+
+      if (year) {
+        year.textContent = String(new Date().getFullYear());
+      }
+
+      requestAnimationFrame(function () {
+        body.classList.add('is-loaded');
+      });
+    });
+  </script>
+</body>
+</html>
