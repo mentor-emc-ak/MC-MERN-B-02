@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth motion-reduce:scroll-auto">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Nandha's personal portfolio showcasing a student journey, MERN projects, and full-stack learning progress."
+		/>
+		<title>Nandha | MERN Portfolio</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<style type="text/tailwindcss">
+			@theme {
+				--font-body: "Plus Jakarta Sans", sans-serif;
+				--font-display: "Instrument Serif", serif;
+				--font-mono: "IBM Plex Mono", monospace;
+				--color-paper: #fff8ef;
+				--color-ink: #fffaf4;
+				--color-muted: #d6dde5;
+				--color-deep: #071119;
+				--shadow-panel: 0 28px 90px rgba(0, 0, 0, 0.42);
+			}
+
+			:root {
+				--accent: #f08e55;
+				--accent-rgb: 240 142 85;
+				--line: rgba(255, 255, 255, 0.16);
+				--grid: rgba(255, 255, 255, 0.04);
+			}
+
+			:root[data-theme="builder"] {
+				--accent: #72d5ff;
+				--accent-rgb: 114 213 255;
+			}
+
+			:root[data-theme="explorer"] {
+				--accent: #d7ff6d;
+				--accent-rgb: 215 255 109;
+			}
+
+			body.motion-paused *,
+			body.motion-paused *::before,
+			body.motion-paused *::after {
+				animation-play-state: paused !important;
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				*,
+				*::before,
+				*::after {
+					animation-duration: 0.01ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.01ms !important;
+				}
+			}
+		</style>
+	</head>
+	<body
+		class="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_top_left,rgb(var(--accent-rgb)/0.18),transparent_24%),radial-gradient(circle_at_82%_14%,rgba(131,214,207,0.12),transparent_24%),linear-gradient(135deg,#040c13_0%,#08131d_38%,#081018_100%)] font-body text-ink before:pointer-events-none before:fixed before:inset-0 before:z-0 before:opacity-[0.65] before:content-[''] before:bg-[linear-gradient(var(--grid)_1px,transparent_1px),linear-gradient(90deg,var(--grid)_1px,transparent_1px)] before:[background-size:36px_36px] before:[mask-image:radial-gradient(circle_at_center,black_55%,transparent_100%)]"
+	>
+		<div
+			class="cursor-glow fixed left-0 top-0 z-0 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgb(var(--accent-rgb)/0.18),transparent_62%)] opacity-[0.72] blur-[16px] pointer-events-none [translate:-50%_-50%]"
+			aria-hidden="true"
+		></div>
+		<div
+			class="fixed inset-0 z-[1] opacity-[0.08] pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.8)_0.7px,transparent_0.7px),radial-gradient(circle_at_80%_30%,rgba(255,255,255,0.7)_0.6px,transparent_0.6px),radial-gradient(circle_at_40%_70%,rgba(255,255,255,0.8)_0.8px,transparent_0.8px),radial-gradient(circle_at_60%_90%,rgba(255,255,255,0.5)_0.7px,transparent_0.7px)] [background-size:150px_150px,210px_210px,180px_180px,260px_260px]"
+			aria-hidden="true"
+		></div>
+
+		<div class="relative z-[2] mx-auto max-w-[1180px] px-4 pb-16 max-[720px]:px-[0.625rem]">
+			<header
+				class="sticky top-0 z-10 flex items-center justify-between gap-4 bg-[linear-gradient(180deg,rgba(4,11,17,0.86),rgba(4,11,17,0.22))] py-[1.2rem] backdrop-blur-[18px] max-[720px]:flex-col max-[720px]:items-start"
+			>
+				<a
+					href="#home"
+					class="inline-flex items-center gap-[0.65rem] font-mono text-[0.92rem] tracking-[0.08em] text-paper uppercase"
+				>
+					<span
+						class="grid h-[2.2rem] w-[2.2rem] place-items-center rounded-full bg-[linear-gradient(135deg,var(--accent),#fff8ef)] text-deep shadow-[0_0_24px_rgb(var(--accent-rgb)/0.4)]"
+					>
+						N
+					</span>
+					Nandha
+				</a>
+
+				<nav
+					class="flex items-center gap-4 rounded-full border border-[var(--line)] bg-[rgba(6,13,20,0.78)] px-[0.7rem] py-[0.55rem] max-[720px]:w-full max-[720px]:justify-between"
+					aria-label="Primary navigation"
+				>
+					<a
+						href="#projects"
+						class="font-mono text-[0.74rem] tracking-[0.08em] text-[#eef4fb] uppercase transition-colors duration-[180ms] hover:text-paper"
+					>
+						Projects
+					</a>
+					<a
+						href="#stack"
+						class="font-mono text-[0.74rem] tracking-[0.08em] text-[#eef4fb] uppercase transition-colors duration-[180ms] hover:text-paper"
+					>
+						Stack
+					</a>
+					<a
+						href="#journey"
+						class="font-mono text-[0.74rem] tracking-[0.08em] text-[#eef4fb] uppercase transition-colors duration-[180ms] hover:text-paper"
+					>
+						Journey
+					</a>
+				</nav>
+			</header>
+
+			<main id="home">
+				<section
+					class="mt-[5.5rem] grid items-center gap-8 pt-8 min-[721px]:pt-16 min-[1081px]:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)]"
+				>
+					<div
+						class="reveal relative opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0]"
+						data-visible="false"
+					>
+						<p class="mb-4 font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">
+							11th grade student / MERN learner / building real projects
+						</p>
+						<h1
+							class="max-w-[11ch] text-[clamp(3.1rem,14vw,4.6rem)] leading-[0.97] font-semibold min-[721px]:text-[clamp(3.8rem,9vw,7.4rem)]"
+						>
+							Full-stack ideas with
+							<span class="font-display font-normal italic text-paper">student energy</span>
+							and a
+							<span class="font-display font-normal italic text-paper">builder's rhythm</span>.
+						</h1>
+
+						<p class="mt-[1.6rem] max-w-[60ch] text-[1.02rem] leading-[1.8] text-muted [text-wrap:pretty]">
+							I am Nandha. I am studying 11th and currently building projects with the
+							MERN stack. I have already developed 2 to 3 projects, and each one helps
+							me learn faster, code cleaner, and think more like a full-stack developer.
+						</p>
+
+						<div class="mt-8 flex flex-wrap gap-[0.85rem]" aria-label="Portfolio mode selector">
+							<button
+								class="mode-chip cursor-pointer rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-[0.8rem] text-muted transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:border-[rgb(var(--accent-rgb)/0.48)] hover:bg-[rgb(var(--accent-rgb)/0.12)] hover:text-paper hover:shadow-[0_12px_24px_rgb(var(--accent-rgb)/0.12)] data-[active=true]:border-[rgb(var(--accent-rgb)/0.48)] data-[active=true]:bg-[rgb(var(--accent-rgb)/0.12)] data-[active=true]:text-paper data-[active=true]:shadow-[0_12px_24px_rgb(var(--accent-rgb)/0.12)]"
+								type="button"
+								data-mode="student"
+								data-active="true"
+								aria-pressed="true"
+							>
+								Student Lens
+							</button>
+							<button
+								class="mode-chip cursor-pointer rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-[0.8rem] text-muted transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:border-[rgb(var(--accent-rgb)/0.48)] hover:bg-[rgb(var(--accent-rgb)/0.12)] hover:text-paper hover:shadow-[0_12px_24px_rgb(var(--accent-rgb)/0.12)] data-[active=true]:border-[rgb(var(--accent-rgb)/0.48)] data-[active=true]:bg-[rgb(var(--accent-rgb)/0.12)] data-[active=true]:text-paper data-[active=true]:shadow-[0_12px_24px_rgb(var(--accent-rgb)/0.12)]"
+								type="button"
+								data-mode="builder"
+								data-active="false"
+								aria-pressed="false"
+							>
+								Builder Mode
+							</button>
+							<button
+								class="mode-chip cursor-pointer rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-[0.8rem] text-muted transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:border-[rgb(var(--accent-rgb)/0.48)] hover:bg-[rgb(var(--accent-rgb)/0.12)] hover:text-paper hover:shadow-[0_12px_24px_rgb(var(--accent-rgb)/0.12)] data-[active=true]:border-[rgb(var(--accent-rgb)/0.48)] data-[active=true]:bg-[rgb(var(--accent-rgb)/0.12)] data-[active=true]:text-paper data-[active=true]:shadow-[0_12px_24px_rgb(var(--accent-rgb)/0.12)]"
+								type="button"
+								data-mode="explorer"
+								data-active="false"
+								aria-pressed="false"
+							>
+								Curious Mode
+							</button>
+						</div>
+
+						<div class="mt-8 flex flex-wrap gap-4">
+							<a
+								href="#projects"
+								class="inline-flex min-h-[3.35rem] items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),#fff8ef)] px-[1.3rem] py-[0.9rem] text-deep shadow-[0_14px_34px_rgb(var(--accent-rgb)/0.2)] transition-transform duration-200 [transition-timing-function:ease] hover:-translate-y-0.5"
+							>
+								See My Work
+							</a>
+							<button
+								class="inline-flex min-h-[3.35rem] cursor-pointer items-center justify-center rounded-full border border-white/[0.14] bg-transparent px-[1.3rem] py-[0.9rem] text-paper transition-transform duration-200 [transition-timing-function:ease] hover:-translate-y-0.5"
+								type="button"
+								id="pulseToggle"
+							>
+								Pause motion
+							</button>
+						</div>
+
+						<ul class="mt-10 grid list-none gap-4 p-0 min-[721px]:grid-cols-3" aria-label="Quick stats">
+							<li class="rounded-[16px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-5 shadow-panel backdrop-blur-[18px]">
+								<strong class="mb-[0.4rem] block text-[clamp(1.9rem,5vw,2.7rem)] text-paper" data-count="11">0</strong>
+								<span class="text-[0.92rem] text-muted">Current grade</span>
+							</li>
+							<li class="rounded-[16px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-5 shadow-panel backdrop-blur-[18px]">
+								<strong class="mb-[0.4rem] block text-[clamp(1.9rem,5vw,2.7rem)] text-paper" data-count="3">0</strong>
+								<span class="text-[0.92rem] text-muted">Projects built</span>
+							</li>
+							<li class="rounded-[16px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-5 shadow-panel backdrop-blur-[18px]">
+								<strong class="mb-[0.4rem] block text-[clamp(1.9rem,5vw,2.7rem)] text-paper" data-count="7">0</strong>
+								<span class="text-[0.92rem] text-muted">Core tools used</span>
+							</li>
+						</ul>
+					</div>
+
+					<div
+						class="reveal opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0]"
+						data-visible="false"
+					>
+						<div
+							class="tilt-card relative min-h-[28rem] overflow-hidden rounded-[32px] border border-[rgb(var(--accent-rgb)/0.18)] bg-[radial-gradient(circle_at_50%_50%,rgb(var(--accent-rgb)/0.14),transparent_33%),linear-gradient(180deg,rgba(255,255,255,0.09),rgba(255,255,255,0.03)),linear-gradient(180deg,rgba(6,14,21,0.72),rgba(6,14,21,0.88))] shadow-panel transition-[transform,border-color,box-shadow] duration-[180ms] [transition-timing-function:ease] hover:border-[rgb(var(--accent-rgb)/0.28)] hover:shadow-[0_26px_90px_rgba(0,0,0,0.42)] [transform:perspective(1200px)_rotateX(var(--rotate-x,0deg))_rotateY(var(--rotate-y,0deg))_translateY(var(--lift-y,0px))] [transform-style:preserve-3d] min-[721px]:min-h-[35rem]"
+						>
+							<canvas id="signalCanvas" class="absolute inset-0" aria-hidden="true"></canvas>
+
+							<div class="absolute inset-0 p-[1.4rem]">
+								<div class="absolute inset-[14%] rounded-full border border-[rgb(var(--accent-rgb)/0.14)] animate-[spin_22s_linear_infinite]" aria-hidden="true"></div>
+								<div class="absolute inset-[24%] rounded-full border border-[rgb(var(--accent-rgb)/0.14)] animate-[spin_16s_linear_infinite] [animation-direction:reverse]" aria-hidden="true"></div>
+
+								<article class="absolute bottom-[1rem] left-[1rem] right-[1rem] rounded-[1.5rem] border border-[var(--line)] bg-[rgba(6,14,21,0.88)] p-[1.35rem] shadow-panel backdrop-blur-[18px] min-[721px]:bottom-[1.4rem] min-[721px]:left-[1.4rem] min-[721px]:right-[1.4rem]">
+									<p class="mb-4 font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">Live focus</p>
+									<h2 id="modeTitle" class="text-[clamp(2rem,5vw,3.4rem)]">Student Lens</h2>
+									<p id="modeText" class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+										Learning the fundamentals by shipping compact full-stack projects that
+										sharpen both frontend and backend thinking.
+									</p>
+								</article>
+
+								<div class="absolute left-[8%] top-[12%] grid min-h-[5rem] min-w-[5rem] place-items-center rounded-full border border-white/10 bg-[rgba(7,17,25,0.9)] p-4 font-mono text-[0.72rem] text-paper shadow-panel backdrop-blur-[18px] min-[721px]:min-h-[6.2rem] min-[721px]:min-w-[6.2rem] min-[721px]:text-[0.82rem]">
+									MongoDB
+								</div>
+								<div class="absolute right-[10%] top-[18%] grid min-h-[5rem] min-w-[5rem] place-items-center rounded-full border border-white/10 bg-[rgba(7,17,25,0.9)] p-4 font-mono text-[0.72rem] text-paper shadow-panel backdrop-blur-[18px] min-[721px]:min-h-[6.2rem] min-[721px]:min-w-[6.2rem] min-[721px]:text-[0.82rem]">
+									React
+								</div>
+								<div class="absolute bottom-[28%] left-[18%] grid min-h-[5rem] min-w-[5rem] place-items-center rounded-full border border-white/10 bg-[rgba(7,17,25,0.9)] p-4 font-mono text-[0.72rem] text-paper shadow-panel backdrop-blur-[18px] min-[721px]:min-h-[6.2rem] min-[721px]:min-w-[6.2rem] min-[721px]:text-[0.82rem]">
+									Node.js
+								</div>
+								<div class="absolute left-1/2 top-1/2 grid h-[7.25rem] w-[7.25rem] place-items-center rounded-full border border-[rgb(var(--accent-rgb)/0.32)] bg-[linear-gradient(135deg,rgb(var(--accent-rgb)/0.3),rgba(255,255,255,0.08))] shadow-panel backdrop-blur-[18px] [translate:-50%_-50%]">
+									<span class="font-display text-[3rem] italic text-paper">N</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section
+					class="mt-[5.5rem] grid items-start gap-8 min-[1081px]:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]"
+				>
+					<div
+						class="reveal max-w-[42rem] opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0]"
+						data-visible="false"
+					>
+						<p class="mb-4 font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">About me</p>
+						<h2 class="text-[clamp(2.3rem,10vw,3.4rem)] leading-[0.97] font-display font-normal italic text-paper min-[721px]:text-[clamp(2.7rem,6vw,4.6rem)]">
+							I learn by building, breaking, and rebuilding.
+						</h2>
+						<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+							My focus is simple: keep making projects, understand how the full stack fits
+							together, and turn every new idea into something that works in the browser.
+						</p>
+					</div>
+
+					<div class="grid gap-4 min-[1081px]:grid-cols-3">
+						<article
+							class="tilt-card reveal relative min-h-[18rem] overflow-hidden rounded-[22px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.15rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:border-[rgb(var(--accent-rgb)/0.28)] hover:shadow-[0_26px_90px_rgba(0,0,0,0.42)] hover:before:opacity-100 opacity-0 [translate:0_32px] blur-[8px] transition-[opacity,translate,filter,transform,border-color,box-shadow] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0] [transform:perspective(1200px)_rotateX(var(--rotate-x,0deg))_rotateY(var(--rotate-y,0deg))_translateY(var(--lift-y,0px))] [transform-style:preserve-3d] min-[721px]:p-[1.4rem]"
+							data-visible="false"
+						>
+							<p class="mb-4 font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">01</p>
+							<h3 class="text-[1.5rem] text-paper">School + code</h3>
+							<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+								I am balancing my studies with hands-on coding and using project work to
+								grow beyond theory.
+							</p>
+						</article>
+
+						<article
+							class="tilt-card reveal relative min-h-[18rem] overflow-hidden rounded-[22px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.15rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:border-[rgb(var(--accent-rgb)/0.28)] hover:shadow-[0_26px_90px_rgba(0,0,0,0.42)] hover:before:opacity-100 opacity-0 [translate:0_32px] blur-[8px] transition-[opacity,translate,filter,transform,border-color,box-shadow] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0] [transform:perspective(1200px)_rotateX(var(--rotate-x,0deg))_rotateY(var(--rotate-y,0deg))_translateY(var(--lift-y,0px))] [transform-style:preserve-3d] min-[721px]:p-[1.4rem]"
+							data-visible="false"
+						>
+							<p class="mb-4 font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">02</p>
+							<h3 class="text-[1.5rem] text-paper">MERN in practice</h3>
+							<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+								I work with MongoDB, Express, React, and Node to understand how real apps
+								connect from database to UI.
+							</p>
+						</article>
+
+						<article
+							class="tilt-card reveal relative min-h-[18rem] overflow-hidden rounded-[22px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.15rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:border-[rgb(var(--accent-rgb)/0.28)] hover:shadow-[0_26px_90px_rgba(0,0,0,0.42)] hover:before:opacity-100 opacity-0 [translate:0_32px] blur-[8px] transition-[opacity,translate,filter,transform,border-color,box-shadow] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0] [transform:perspective(1200px)_rotateX(var(--rotate-x,0deg))_rotateY(var(--rotate-y,0deg))_translateY(var(--lift-y,0px))] [transform-style:preserve-3d] min-[721px]:p-[1.4rem]"
+							data-visible="false"
+						>
+							<p class="mb-4 font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">03</p>
+							<h3 class="text-[1.5rem] text-paper">Momentum matters</h3>
+							<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+								With every project, I improve routing, APIs, component structure, state
+								flow, and problem-solving speed.
+							</p>
+						</article>
+					</div>
+				</section>
+
+				<section class="relative mt-[5.5rem]" id="projects">
+					<div
+						class="reveal max-w-[42rem] opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0]"
+						data-visible="false"
+					>
+						<p class="mb-4 font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">MERN builds so far</p>
+						<h2 class="text-[clamp(2.3rem,10vw,3.4rem)] leading-[0.97] font-display font-normal italic text-paper min-[721px]:text-[clamp(2.7rem,6vw,4.6rem)]">
+							Small project count. Serious learning curve.
+						</h2>
+						<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+							These cards reflect the kind of work I have already started building with the
+							MERN stack and the skills I keep sharpening in each version.
+						</p>
+					</div>
+
+					<div class="mt-8 grid gap-4 min-[1081px]:grid-cols-3">
+						<article
+							class="tilt-card reveal relative min-h-[23rem] overflow-hidden rounded-[22px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.15rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:border-[rgb(var(--accent-rgb)/0.28)] hover:shadow-[0_26px_90px_rgba(0,0,0,0.42)] hover:before:opacity-100 opacity-0 [translate:0_32px] blur-[8px] transition-[opacity,translate,filter,transform,border-color,box-shadow] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0] [transform:perspective(1200px)_rotateX(var(--rotate-x,0deg))_rotateY(var(--rotate-y,0deg))_translateY(var(--lift-y,0px))] [transform-style:preserve-3d] min-[721px]:p-[1.45rem]"
+							data-visible="false"
+						>
+							<span class="mb-4 inline-block font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">Project 01</span>
+							<h3 class="text-[1.8rem] text-paper">Auth-ready app</h3>
+							<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+								Built around user flow, protected routes, forms, and backend logic that
+								makes a login-based app feel complete.
+							</p>
+							<ul class="mt-8 flex list-none flex-wrap gap-[0.6rem] p-0">
+								<li class="rounded-full bg-white/[0.11] px-[0.8rem] py-[0.55rem] text-paper">React pages</li>
+								<li class="rounded-full bg-white/[0.11] px-[0.8rem] py-[0.55rem] text-paper">Express API</li>
+								<li class="rounded-full bg-white/[0.11] px-[0.8rem] py-[0.55rem] text-paper">MongoDB data flow</li>
+							</ul>
+						</article>
+
+						<article
+							class="tilt-card reveal relative min-h-[23rem] overflow-hidden rounded-[22px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.15rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:border-[rgb(var(--accent-rgb)/0.28)] hover:shadow-[0_26px_90px_rgba(0,0,0,0.42)] hover:before:opacity-100 opacity-0 [translate:0_32px] blur-[8px] transition-[opacity,translate,filter,transform,border-color,box-shadow] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0] [transform:perspective(1200px)_rotateX(var(--rotate-x,0deg))_rotateY(var(--rotate-y,0deg))_translateY(var(--lift-y,0px))] [transform-style:preserve-3d] min-[721px]:p-[1.45rem] min-[1081px]:translate-y-[2.1rem]"
+							data-visible="false"
+						>
+							<span class="mb-4 inline-block font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">Project 02</span>
+							<h3 class="text-[1.8rem] text-paper">Dashboard build</h3>
+							<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+								Focused on clean UI sections, reusable components, and CRUD actions that
+								connect the frontend with live backend data.
+							</p>
+							<ul class="mt-8 flex list-none flex-wrap gap-[0.6rem] p-0">
+								<li class="rounded-full bg-white/[0.11] px-[0.8rem] py-[0.55rem] text-paper">Reusable UI</li>
+								<li class="rounded-full bg-white/[0.11] px-[0.8rem] py-[0.55rem] text-paper">Data updates</li>
+								<li class="rounded-full bg-white/[0.11] px-[0.8rem] py-[0.55rem] text-paper">Component logic</li>
+							</ul>
+						</article>
+
+						<article
+							class="tilt-card reveal relative min-h-[23rem] overflow-hidden rounded-[22px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.15rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:border-[rgb(var(--accent-rgb)/0.28)] hover:shadow-[0_26px_90px_rgba(0,0,0,0.42)] hover:before:opacity-100 opacity-0 [translate:0_32px] blur-[8px] transition-[opacity,translate,filter,transform,border-color,box-shadow] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0] [transform:perspective(1200px)_rotateX(var(--rotate-x,0deg))_rotateY(var(--rotate-y,0deg))_translateY(var(--lift-y,0px))] [transform-style:preserve-3d] min-[721px]:p-[1.45rem] min-[1081px]:translate-y-[4.1rem]"
+							data-visible="false"
+						>
+							<span class="mb-4 inline-block font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">Project 03</span>
+							<h3 class="text-[1.8rem] text-paper">Full-stack practice lab</h3>
+							<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+								A space for testing APIs, routing, state handling, and the habit of taking a
+								rough idea and making it usable.
+							</p>
+							<ul class="mt-8 flex list-none flex-wrap gap-[0.6rem] p-0">
+								<li class="rounded-full bg-white/[0.11] px-[0.8rem] py-[0.55rem] text-paper">Route structure</li>
+								<li class="rounded-full bg-white/[0.11] px-[0.8rem] py-[0.55rem] text-paper">API testing</li>
+								<li class="rounded-full bg-white/[0.11] px-[0.8rem] py-[0.55rem] text-paper">Frontend polish</li>
+							</ul>
+						</article>
+					</div>
+				</section>
+
+				<section
+					class="mt-[5.5rem] grid items-start gap-8 min-[1081px]:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]"
+					id="stack"
+				>
+					<div
+						class="reveal max-w-[42rem] opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0]"
+						data-visible="false"
+					>
+						<p class="mb-4 font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">Stack + skills</p>
+						<h2 class="text-[clamp(2.3rem,10vw,3.4rem)] leading-[0.97] font-display font-normal italic text-paper min-[721px]:text-[clamp(2.7rem,6vw,4.6rem)]">
+							The tools I am growing with right now.
+						</h2>
+						<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+							Hover around the stack field. The layout reacts to your pointer so the page
+							feels less static and more like an active workbench.
+						</p>
+					</div>
+
+					<div
+						class="reveal relative flex flex-wrap gap-4 overflow-hidden rounded-[32px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.4rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:before:opacity-100 opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0]"
+						data-visible="false"
+						aria-label="Technology stack"
+					>
+						<button class="skill-pill relative cursor-pointer rounded-full border border-white/[0.14] bg-white/10 px-[1.2rem] py-4 text-paper transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:-translate-y-0.5" type="button">MongoDB</button>
+						<button class="skill-pill relative cursor-pointer rounded-full border border-white/[0.14] bg-white/10 px-[1.2rem] py-4 text-paper transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:-translate-y-0.5" type="button">Express</button>
+						<button class="skill-pill relative cursor-pointer rounded-full border border-white/[0.14] bg-white/10 px-[1.2rem] py-4 text-paper transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:-translate-y-0.5" type="button">React</button>
+						<button class="skill-pill relative cursor-pointer rounded-full border border-white/[0.14] bg-white/10 px-[1.2rem] py-4 text-paper transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:-translate-y-0.5" type="button">Node.js</button>
+						<button class="skill-pill relative cursor-pointer rounded-full border border-white/[0.14] bg-white/10 px-[1.2rem] py-4 text-paper transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:-translate-y-0.5" type="button">JavaScript</button>
+						<button class="skill-pill relative cursor-pointer rounded-full border border-white/[0.14] bg-white/10 px-[1.2rem] py-4 text-paper transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:-translate-y-0.5" type="button">HTML</button>
+						<button class="skill-pill relative cursor-pointer rounded-full border border-white/[0.14] bg-white/10 px-[1.2rem] py-4 text-paper transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:-translate-y-0.5" type="button">CSS</button>
+						<button class="skill-pill relative cursor-pointer rounded-full border border-white/[0.14] bg-white/10 px-[1.2rem] py-4 text-paper transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:-translate-y-0.5" type="button">REST APIs</button>
+						<button class="skill-pill relative cursor-pointer rounded-full border border-white/[0.14] bg-white/10 px-[1.2rem] py-4 text-paper transition-[transform,border-color,background-color,color,box-shadow] duration-200 [transition-timing-function:ease] hover:-translate-y-0.5" type="button">CRUD Logic</button>
+					</div>
+				</section>
+
+				<section class="mt-[5.5rem]" id="journey">
+					<div
+						class="reveal max-w-[42rem] opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0]"
+						data-visible="false"
+					>
+						<p class="mb-4 font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">Journey</p>
+						<h2 class="text-[clamp(2.3rem,10vw,3.4rem)] leading-[0.97] font-display font-normal italic text-paper min-[721px]:text-[clamp(2.7rem,6vw,4.6rem)]">
+							What I am building next is even more important than what I built first.
+						</h2>
+					</div>
+
+					<div class="mt-8 grid gap-4 min-[1081px]:grid-cols-3">
+						<article
+							class="reveal relative min-h-[17rem] overflow-hidden rounded-[22px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.15rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:before:opacity-100 opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0] min-[721px]:p-[1.35rem]"
+							data-visible="false"
+						>
+							<span class="mb-8 inline-block font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">01</span>
+							<h3 class="text-[1.8rem] text-paper">Keep shipping</h3>
+							<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+								The goal is steady output: more complete apps, clearer structure, and better
+								execution with each build.
+							</p>
+						</article>
+
+						<article
+							class="reveal relative min-h-[17rem] overflow-hidden rounded-[22px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.15rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:before:opacity-100 opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0] min-[721px]:p-[1.35rem]"
+							data-visible="false"
+						>
+							<span class="mb-8 inline-block font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">02</span>
+							<h3 class="text-[1.8rem] text-paper">Think full-stack</h3>
+							<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+								I want every project to improve how I connect frontend experience with data,
+								APIs, and backend logic.
+							</p>
+						</article>
+
+						<article
+							class="reveal relative min-h-[17rem] overflow-hidden rounded-[22px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.15rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:before:opacity-100 opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0] min-[721px]:p-[1.35rem]"
+							data-visible="false"
+						>
+							<span class="mb-8 inline-block font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">03</span>
+							<h3 class="text-[1.8rem] text-paper">Build with intent</h3>
+							<p class="mt-4 leading-[1.8] text-muted [text-wrap:pretty]">
+								Even as a student, I want my work to feel thoughtful, interactive, and ready
+								for bigger opportunities.
+							</p>
+						</article>
+					</div>
+				</section>
+			</main>
+
+			<footer
+				class="reveal relative mt-28 overflow-hidden rounded-[22px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))] p-[1.15rem] shadow-panel backdrop-blur-[18px] before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-[240ms] before:content-[''] before:bg-[linear-gradient(125deg,rgb(var(--accent-rgb)/0.18),transparent_40%)] hover:before:opacity-100 opacity-0 blur-[8px] [translate:0_32px] transition-[opacity,translate,filter] duration-[600ms] [transition-timing-function:ease] data-[visible=true]:opacity-100 data-[visible=true]:blur-0 data-[visible=true]:[translate:0_0] min-[721px]:p-[1.6rem]"
+				data-visible="false"
+			>
+				<p class="mb-4 font-mono text-[0.78rem] tracking-[0.08em] text-[var(--accent)] uppercase">
+					Nandha / Student / MERN builder
+				</p>
+				<p class="leading-[1.8] text-muted [text-wrap:pretty]">
+					Built as a portfolio that feels active, curious, and future-facing, just like the
+					learning journey behind it.
+				</p>
+			</footer>
+		</div>
+
+		<script src="main.js"></script>
+	</body>
+</html>
