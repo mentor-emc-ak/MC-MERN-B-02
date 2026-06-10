@@ -45,9 +45,9 @@ app.get('/users/:id', async (req, res) => {
   }
 });
 
-app.patch('/users/:id', async (req, res) => {
+app.patch('/users/:userId', async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, {
+    const user = await User.findByIdAndUpdate(req.params.userId, {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password
