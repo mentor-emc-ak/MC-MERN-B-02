@@ -4,19 +4,18 @@ import { protect } from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.use(protect);
 
-router.get('/', async (req, res) => {
+router.get('/', protect, async (req, res) => {
   const posts = await Post.find().populate('author', 'name email').sort('-createdAt');
   res.json(posts);
 });
 
-router.post('/', async (req, res) => {
+router.post('/', protect, async (req, res) => {
   const post = await Post.create({ ...req.body, author: req.user.id });
   res.status(201).json(post);
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', protect, async (req, res) => {
   const post = await Post.findById(req.params.id);
   if (!post) return res.status(404).json({ message: 'Post not found' });
   if (post.author.toString() !== req.user.id) return res.status(403).json({ message: 'Forbidden' });
@@ -25,7 +24,7 @@ router.put('/:id', async (req, res) => {
   res.json(post);
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', protect, async (req, res) => {
   const post = await Post.findById(req.params.id);
   if (!post) return res.status(404).json({ message: 'Post not found' });
   if (post.author.toString() !== req.user.id) return res.status(403).json({ message: 'Forbidden' });
