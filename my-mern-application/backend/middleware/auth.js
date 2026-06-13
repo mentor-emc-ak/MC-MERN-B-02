@@ -1,14 +1,19 @@
 import { auth } from '../config/firebase.js';
 import User from '../models/User.js';
 
-export const protect = async (req, res, next) => {
+export const extractFirebaseInfo = async (req) => {
   const authHeader = req.headers.authorization;
   if (!authHeader?.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'Not authorized' });
+    throw new Error('Not authorized');
   }
+  const token = authHeader.split(' ')[1];
+  const decoded = await auth.verifyIdToken(token);
+  return decoded;
+};
+
+export const protect = async (req, res, next) => {
   try {
-    const token = authHeader.split(' ')[1];
-    const decoded = await auth.verifyIdToken(token);
+    const decoded = await extractFirebaseInfo(req);
 
     let user = await User.findOne({ firebaseUid: decoded.uid });
     if (!user) {
